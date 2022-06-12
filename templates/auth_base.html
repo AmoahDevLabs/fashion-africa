@@ -1,0 +1,144 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="theme-color" content="#000000"/>
+    {#    <link rel="shortcut icon" href="../../assets/img/favicon.ico"/>#}
+    <link
+            rel="apple-touch-icon"
+            sizes="76x76"
+            href="../../assets/img/apple-icon.png"
+    />
+    <link
+            rel="stylesheet"
+            href="{% static 'vendor/@fortawesome/fontawesome-free/css/all.min.css' %}"
+    />
+    <link rel="stylesheet" href="{% static 'css/main.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}"/>
+    <title>{% block title %}{% endblock %} | Hire purchase</title>
+</head>
+<body class="text-gray-700 antialiased">
+<nav
+        class="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg"
+>
+    <div
+            class="container px-4 mx-auto flex flex-wrap items-center justify-between"
+    >
+        <div
+                class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start"
+        >
+            <a
+                    class="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
+                    href="/"
+            >Fashion Africa</a
+            >
+            <button
+                    class="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
+                    type="button"
+                    onclick="toggleNavbar('example-collapse-navbar')"
+            >
+                <i class="text-white fas fa-bars"></i>
+            </button>
+        </div>
+        <div
+                class="lg:flex flex-grow items-center bg-white lg:bg-opacity-0 lg:shadow-none hidden"
+                id="example-collapse-navbar"
+        >
+            <ul class="flex flex-col lg:flex-row list-none mr-auto">
+                <li class="flex items-center">
+                    <a
+                            class="lg:text-white lg:hover:text-gray-200 text-gray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                            href="#"
+                    ><i
+                            class="lg:text-gray-200 text-gray-400 far fa-file-alt text-lg leading-lg mr-2"
+                    ></i>
+                        Docs</a
+                    >
+                </li>
+            </ul>
+            <ul
+                    class="flex flex-col lg:flex-row list-none lg:ml-auto items-center"
+            >
+                <li class="inline-block relative">
+                    <a
+                            class="lg:text-white lg:hover:text-gray-200 text-gray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                            href="#hash"
+                            onclick="openDropdown(event,'demo-pages-dropdown')"
+                    >
+                        Account
+                    </a>
+                    <div
+                            class="hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48"
+                            id="demo-pages-dropdown"
+                    >
+                <span
+                        class="text-sm pt-2 pb-0 px-4 font-bold block w-full whitespace-nowrap bg-transparent text-gray-400"
+                >
+                  Pages
+                </span>
+                        <a
+                                href="#"
+                                class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700"
+                        >
+                            Store
+                        </a>
+                        <a
+                                href="#"
+                                class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700"
+                        >
+                            Categories
+                        </a>
+                        <div
+                                class="h-0 mx-4 my-2 border border-solid border-gray-100"
+                        ></div>
+                        <span
+                                class="text-sm pt-2 pb-0 px-4 font-bold block w-full whitespace-nowrap bg-transparent text-gray-400"
+                        >
+                  Auth
+                </span>
+                        {% if request.user.is_authenticated %}
+                            <a
+                                    href="{% url 'accounts:logout' %}"
+                                    class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700"
+                            >
+                                Logout
+                            </a>
+                        {% else %}
+                            <a
+                                    href="{% url 'accounts:login' %}"
+                                    class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700"
+                            >
+                                Login
+                            </a>
+                        {% endif %}
+                        <div
+                                class="h-0 mx-4 my-2 border border-solid border-gray-100"
+                        ></div>
+                    </div>
+                </li>
+                <li class="flex items-center">
+                    <button onclick="window.location='#';"
+                            class="bg-white text-gray-700 active:bg-gray-50 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
+                            type="button"
+                    >
+                        <i class="fa-solid fa-shopping-cart"></i>
+                        {% with total_items=cart|length %}
+                            {% if total_items > 0 %}
+                                {{ total_items }}
+                            {% endif %}
+                        {% endwith %}
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+{% block content %}
+
+{% endblock %}
+</body>
+<script src="{% static 'js/popper.js' %}"></script>
+<script src="{% static 'js/navbar.js' %}"></script>
+</html>

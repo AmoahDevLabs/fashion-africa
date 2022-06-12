@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Store {% endblock %}
+
+
+{% block content %}
+     <main class="my-8">
+        <div class="container mx-auto px-6">
+            {% include 'store/partials/product_head.html' %}
+            {% include 'store/partials/product_list.html' %}
+        </div>
+    </main>
+{% endblock %}

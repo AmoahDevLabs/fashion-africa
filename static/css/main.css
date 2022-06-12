@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*This enables list to take the effect applied in tailwind.config.js */
+ul { @apply list-disc ml-10 }
+
+ul { @apply list-decimal ml-10 }
+
+ul { @apply list-none ml-10 }
+
+.card-primary{
+    @apply bg-white rounded overflow-hidden shadow-md relative
+}
+
+.card-secondary{
+    @apply bg-gray-50 rounded overflow-hidden shadow-md relative
+}
+
+.alert-success{
+    @apply bg-green-100 rounded overflow-hidden shadow-md relative
+}
+
+.alert-danger{
+    @apply bg-red-100 rounded overflow-hidden shadow-md relative
+}
+
+.btn-primary{
+    @apply text-white bg-indigo-500 py-3 px-4 my-5 rounded
+}
+
+.btn-primary-sm{
+    @apply inline-block mt-4 py-2 px-4 rounded text-white bg-indigo-500
+}
+
+.btn-cart{
+    @apply mx-2 mt-7 py-3 px-3 text-white bg-green-400 hover:bg-red-500  border rounded-md p-2  focus:outline-none
+}
+
+.btn-info{
+    @apply bg-indigo-500 hover:bg-indigo-500 text-white  mt-10 mr-5 py-2 px-4 rounded uppercase
+}
+
+.btn-ready{
+    @apply px-4 py-2 bg-indigo-500 text-white text-sm font-medium rounded
+}
+
+.btn-danger{
+    @apply bg-red-400 hover:bg-red-500 text-white  mt-10 mr-5 py-2 px-4 rounded uppercase
+}
+
+
+.input-primary{
+    @apply border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow w-full ease-linear transition-all duration-150
+
+}

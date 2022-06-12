@@ -1,0 +1,44 @@
+<div class="container mx-auto">
+    <h2 class="text-xl font-bold mx-5">Reviews</h2>
+    <div class="grid md:grid-cols-2 gap-6 mt-6 mx-5">
+        <div>
+            {% if request.user.is_authenticated %}
+                <form method="post" action="" class="mt-6 mb-6 p-6 bg-gray-100 rounded-xl">
+                    {% csrf_token %}
+
+                    <div>
+                        <label>Rating</label><br>
+                        <select name="rating">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3" selected>3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label>Comment</label><br>
+                        <textarea name="content"
+                                  class="w-full resize-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"></textarea>
+                    </div>
+
+                    <div>
+                        <button class="btn-primary">Submit</button>
+                    </div>
+                </form>
+            {% endif %}
+        </div>
+        <div>
+            {% for review in product.reviews.all %}
+                <div class="px-4 py-6 bg-gray-100 rounded-xl mb-4">
+                    <strong>Rating:</strong> {{ review.rating }}/6<br>
+                    <strong>Date:</strong> {{ review.created_at|date:"Y-m-d" }}<br>
+                    <strong>Comment:</strong><br>
+                    {{ review.content }}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

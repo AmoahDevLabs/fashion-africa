@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ product.name }} {% endblock %}
+
+
+{% block content %}
+    {% include 'store/partials/product_detail.html' %}
+    <div style="margin-bottom: 20%"></div>
+{% endblock %}

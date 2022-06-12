@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %} Search {% endblock %}
+
+{% block content %}
+    <main class="my-8">
+        <div class="container mx-auto px-6">
+            <h3 class="font-bold text-gray-900 pt-5 py-5 mx-auto px-4">Search term: "{{ query }}"</h3>
+            {% include 'store/product/../partials/product_list.html' %}
+            <div style="margin-bottom: 15%"></div>
+        </div>
+    </main>
+{% endblock %}

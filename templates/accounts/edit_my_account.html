@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}Edit Account{% endblock %}
+
+{% block content %}
+    <div class="max-w-6xl mx-auto p-6">
+        <h1 class="mb-5 text-3xl">Edit Account</h1>
+
+        <form method="post" class="space-y-3">
+            {% csrf_token %}
+            <div class="flex flex-wrap">
+                <div class="w-full lg:w-6/12 px-4">
+                    {% for field in form %}
+                        <label for="{{ field.id_for_label }}"
+                               class="block uppercase text-gray-600 text-xs font-bold my-3">{{ field.label_tag }}</label>
+                        <p>{{ field.errors }}</p>
+                        {% render_field field class="input-primary focus:outline-none focus:ring" placeholder=field.name.capitalize %}
+                    {% endfor %}
+                    <div>
+                        <button class="btn-primary">Update</button>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+{% endblock %}

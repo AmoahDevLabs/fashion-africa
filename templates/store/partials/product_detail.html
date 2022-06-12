@@ -1,0 +1,142 @@
+<div class="md:flex items-start justify-center py-12 2xl:px-20 md:px-6 px-4">
+    <div class="xl:w-2/6 lg:w-2/5 w-80 md:block hidden">
+        <img class="w-full" alt="image of a girl posing" src="
+
+                {% if product.image %}{{ product.image.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}"
+             alt="{{ product.name }}"/>
+        {#            <img class="w-full" alt="image of a girl posing" src="https://i.ibb.co/QMdWfzX/component-image-one.png"/>#}
+        {#            <img class="mt-6 w-full" alt="image of a girl posing"#}
+        {#                 src="https://i.ibb.co/qxkRXSq/component-image-two.png"/>#}
+    </div>
+    <div class="md:hidden">
+        <img class="w-full" alt="image of a girl posing" src="
+
+                {% if product.image %}{{ product.image.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}"
+             alt="{{ product.name }}"/>
+        {#        <img class="w-full" alt="image of a girl posing" src="https://i.ibb.co/QMdWfzX/component-image-one.png"/>#}
+        <div class="flex items-center justify-between mt-3 space-x-4 md:space-x-0">
+            {% for img in product.images.all %}
+                <img alt="image-tag-one" class="w-24 h-24 md:w-48 md:h-48 w-full"
+                     src="{{ img.get_thumbnail }}"/>
+            {% endfor %}
+
+            {#                <img alt="image-tag-one" class="md:w-48 md:h-48 w-full"#}
+            {#                     src="https://i.ibb.co/cYDrVGh/Rectangle-245.png"/>#}
+            {#                <img alt="image-tag-one" class="md:w-48 md:h-48 w-full"#}
+            {#                     src="https://i.ibb.co/f17NXrW/Rectangle-244.png"/>#}
+            {#                <img alt="image-tag-one" class="md:w-48 md:h-48 w-full"#}
+            {#                     src="https://i.ibb.co/cYDrVGh/Rectangle-245.png"/>#}
+            {#                <img alt="image-tag-one" class="md:w-48 md:h-48 w-full"#}
+            {#                     src="https://i.ibb.co/f17NXrW/Rectangle-244.png"/>#}
+        </div>
+    </div>
+    <div class="xl:w-2/5 md:w-1/2 lg:ml-8 md:ml-6 md:mt-0 mt-6">
+        <div class="border-b border-gray-200 pb-6">
+            <p class="text-sm leading-none text-gray-600 dark:text-gray-300 ">{{ product.category }}</p>
+            <h1 class="lg:text-2xl text-xl font-semibold lg:leading-6 leading-7 text-gray-800 dark:text-white mt-2">
+                {{ product.name }}</h1>
+            <p class="text-green-500 font-bold mt-5">GH&cent; {{ product.price }}</p>
+        </div>
+        <div class="py-4 border-b border-gray-200 flex items-center justify-between">
+            <p class="text-base leading-4 text-gray-800 dark:text-gray-300">Colours</p>
+            <div class="flex items-center justify-center">
+                <p class="text-sm leading-none text-gray-600 dark:text-gray-300">Smoke Blue with red accents</p>
+                <div class="w-6 h-6 bg-gradient-to-b from-gray-900 to-indigo-500 ml-3 mr-4 cursor-pointer"></div>
+                <img class="dark:hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/productDetail3-svg2.svg"
+                     alt="next">
+                <img class="hidden dark:block"
+                     src="https://tuk-cdn.s3.amazonaws.com/can-uploader/productDetail3-svg2dark.svg" alt="next">
+            </div>
+        </div>
+        <div class="py-4 border-b border-gray-200 flex items-center justify-between">
+            <p class="text-base leading-4 text-gray-800 dark:text-gray-300">Size</p>
+            <div class="flex items-center justify-center">
+                <p class="text-sm leading-none text-gray-600 dark:text-gray-300 mr-3">38.2</p>
+
+                <img class="dark:hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/productDetail3-svg2.svg"
+                     alt="next">
+                <img class="hidden dark:block"
+                     src="https://tuk-cdn.s3.amazonaws.com/can-uploader/productDetail3-svg2dark.svg" alt="next">
+            </div>
+        </div>
+        <div class="flex items-center mt-6">
+            <button class="btn-ready hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500">
+                Buy Now
+            </button>
+            <button
+                    hx-get="{% url 'cart:add_to_cart' product.pk %}"
+                    hx-target="#cart-menu"
+                    hx-swap="outerHTML"
+                    class="mx-2 text-gray-600 border rounded-md p-2 hover:bg-gray-200 focus:outline-none">
+                <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                     stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                    <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                </svg>
+            </button>
+        </div>
+        <div>
+            <p class="xl:pr-48 text-base lg:leading-tight leading-normal text-gray-600 dark:text-gray-300 mt-7">{{ product.description }}</p>
+            <p class="text-base leading-4 mt-7 text-gray-600 dark:text-gray-300">Product Code: 8BN321AF2IF0NYA</p>
+            <p class="text-base leading-4 mt-4 text-gray-600 dark:text-gray-300">Length: 13.2 inches</p>
+            <p class="text-base leading-4 mt-4 text-gray-600 dark:text-gray-300">Height: 10 inches</p>
+            <p class="text-base leading-4 mt-4 text-gray-600 dark:text-gray-300">Depth: 5.1 inches</p>
+            <p class="md:w-96 text-base leading-normal text-gray-600 dark:text-gray-300 mt-4">Composition: 100% calf
+                leather, inside: 100% lamb leather</p>
+        </div>
+        <div>
+            <div class="border-t border-b py-4 mt-7 border-gray-200">
+                <div data-menu class="flex justify-between items-center cursor-pointer">
+                    <p class="text-base leading-4 text-gray-800 dark:text-gray-300">Shipping and returns</p>
+                    <button class="cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 rounded"
+                            role="button" aria-label="show or hide">
+                        <img class="transform dark:hidden"
+                             src="https://tuk-cdn.s3.amazonaws.com/can-uploader/productDetail3-svg4.svg"
+                             alt="dropdown">
+                        <img class="transform hidden dark:block"
+                             src="https://tuk-cdn.s3.amazonaws.com/can-uploader/productDetail3-svg4dark.svg"
+                             alt="dropdown">
+                    </button>
+                </div>
+                <div class="hidden pt-4 text-base leading-normal pr-12 mt-4 text-gray-600 dark:text-gray-300"
+                     id="sect">You will be responsible for paying for your own shipping costs for returning your
+                    item. Shipping costs are nonrefundable
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="border-b py-4 border-gray-200">
+                <div data-menu class="flex justify-between items-center cursor-pointer">
+                    <p class="text-base leading-4 text-gray-800 dark:text-gray-300">Contact us</p>
+                    <button class="cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 rounded"
+                            role="button" aria-label="show or hide">
+                        <img class="transform dark:hidden"
+                             src="https://tuk-cdn.s3.amazonaws.com/can-uploader/productDetail3-svg4.svg"
+                             alt="dropdown">
+                        <img class="transform hidden dark:block"
+                             src="https://tuk-cdn.s3.amazonaws.com/can-uploader/productDetail3-svg4dark.svg"
+                             alt="dropdown">
+                    </button>
+                </div>
+                <div class="hidden pt-4 text-base leading-normal pr-12 mt-4 text-gray-600 dark:text-gray-300"
+                     id="sect">If you have any questions on how to return your item to us, contact us.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    let elements = document.querySelectorAll("[data-menu]");
+    for (let i = 0; i < elements.length; i++) {
+        let main = elements[i];
+        main.addEventListener("click", function () {
+            let element = main.parentElement.parentElement;
+            let andicators = main.querySelectorAll("img");
+            let child = element.querySelector("#sect");
+            child.classList.toggle("hidden");
+            andicators[0].classList.toggle("rotate-180");
+        });
+    }
+
+</script>
